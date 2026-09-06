@@ -10,12 +10,10 @@ on:
 jobs:
   runCode:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write    # 关键：授予写入权限
     steps:
-      - uses: actions/checkout@v4   # 更新到 v4
-
-      - name: 配置 Git 凭据
-        run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      - uses: actions/checkout@v6   # 升级到 v6
 
       - name: Grab Link
         run: |
@@ -23,5 +21,5 @@ jobs:
           git config --global user.name "dp247"
           chmod +x exec_grabber.sh && ./exec_grabber.sh
           git add -A
-          git commit -m "./youtubeLink.txt is updated." || echo "没有需要提交的更改"
+          git commit -m "Auto-update youtube.m3u8" || echo "没有需要提交的更改"
           git push --force-with-lease
