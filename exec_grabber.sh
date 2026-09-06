@@ -1,27 +1,27 @@
 #!/bin/bash
 
-# 安装 yt-dlp（如果未安装）
+# 安装 yt-dlp（如果需要）
 if ! command -v yt-dlp &> /dev/null; then
     echo "Installing yt-dlp..."
     pip install yt-dlp
 fi
 
-# 生成 M3U 文件头
+# 生成 M3U 头
 echo "#EXTM3U" > youtube.m3u8
 echo "" >> youtube.m3u8
 
-# 读取 youtubeLink.txt，处理每个频道
+# 读取 youtubeLink.txt（每行四个字段，用 || 分隔）
 while IFS= read -r line; do
     # 跳过空行和注释行
     [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
 
-    # 解析字段（格式：频道名 || ID.yt || 分类 || URL）
+    # 提取四个字段
     channel_name=$(echo "$line" | awk -F '||' '{print $1}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
     channel_id=$(echo "$line" | awk -F '||' '{print $2}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
     category=$(echo "$line" | awk -F '||' '{print $3}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
     url=$(echo "$line" | awk -F '||' '{print $4}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 
-    # 检查必要字段
+    # 检查完整性
     if [[ -z "$channel_name" || -z "$channel_id" || -z "$url" ]]; then
         echo "跳过无效行: $line"
         continue
@@ -32,7 +32,7 @@ while IFS= read -r line; do
     # 提取直播流地址（禁用缓存）
     stream_url=$(yt-dlp --no-cache-dir -g "$url" 2>/dev/null | head -1)
     if [[ -z "$stream_url" ]]; then
-        echo "❌ 提取失败，重试一次..."
+        echo "重试一次..."
         stream_url=$(yt-dlp --no-cache-dir -g "$url" 2>/dev/null | head -1)
     fi
 
