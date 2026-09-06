@@ -2,21 +2,26 @@ name: LinkGrabber
 
 on:
   schedule:
-    - cron: '0 */3 * * *'    # 每3小时运行一次（UTC时间）
+    - cron: '0 */3 * * *'
   pull_request:
-    branches: [ main ]       # PR到main分支时触发（一般不需要）
-  workflow_dispatch:         # 支持手动触发
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   runCode:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4   # 更新到 v4
+
+      - name: 配置 Git 凭据
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
       - name: Grab Link
         run: |
           git config --global user.email "dp247@hll.localhost"
           git config --global user.name "dp247"
-          chmod +x exec_grabber.sh && ./exec_grabber.sh   # 核心脚本
+          chmod +x exec_grabber.sh && ./exec_grabber.sh
           git add -A
-          git commit -m "./youtubeLink.txt is updated."
-          git push
+          git commit -m "./youtubeLink.txt is updated." || echo "没有需要提交的更改"
+          git push --force-with-lease
