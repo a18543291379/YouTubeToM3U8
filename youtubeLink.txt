@@ -1,34 +1,9 @@
-## FORMAT: <channel name> || <channel id> || <category>
-## <channel name> can be anything - either stream or channel name. It will appear on the EPG though.
-## <channel id> is used to match EPG data to the M3U8 playlist, so make it short and with no spaces. End it in '.yt' to show its from YouTube.
-## <category> is used to group streams, so something like 'Music' or 'News' is recommended.
-
-Fireplace 24/7 || FobosPlanet1.yt || Fireplace
-https://www.youtube.com/watch?v=d8OvbUAxaec
-
-Fireplace 24/7 || FobosPlanet2.yt || Fireplace
-https://www.youtube.com/watch?v=H3uur6g_9CA
-
-Fireplace 24/7 || FobosPlanet3.yt || Fireplace
-https://www.youtube.com/watch?v=vuJoalX0ke4
-
-Fireplace 24/7 || FobosPlanet4.yt || Fireplace
-https://www.youtube.com/watch?v=6QZ_qc75ihU
-
-Fireplace 24/7 || FobosPlanet5.yt || Fireplace
-https://www.youtube.com/watch?v=6QZ_qc75ihU
-
-Fireplace 24/7 || FobosPlanet6.yt || Fireplace
-https://www.youtube.com/watch?v=aZyD6EPl6KU
-
-Fireplace 24/7 || FobosPlanet7.yt || Fireplace
-https://www.youtube.com/watch?v=1bROU5AqM8w
-
-Fireplace 24/7 || FobosPlanet8.yt || Fireplace
-https://www.youtube.com/watch?v=q9bM12ucTIY
-
-Fireplace 24/7 || FobosPlanet9.yt || Fireplace
-https://www.youtube.com/watch?v=_jxkQLJIPuA
-
-Fireplace 24/7 || FobosPlanet10.yt || Fireplace
-https://www.youtube.com/watch?v=gW36lRz0b1o
+Fireplace 24/7 (1) || Fireplace1.yt || Fireplace || https://www.youtube.com/watch?v=d8OvbUAxaec
+Fireplace 24/7 (2) || Fireplace2.yt || Fireplace || https://www.youtube.com/watch?v=H3uur6g_9CA
+Fireplace 24/7 (3) || Fireplace3.yt || Fireplace || https://www.youtube.com/watch?v=vuJoalX0ke4
+Fireplace 24/7 (4) || Fireplace4.yt || Fireplace || https://www.youtube.com/watch?v=6QZ_qc75ihU
+Fireplace 24/7 (5) || Fireplace5.yt || Fireplace || https://www.youtube.com/watch?v=aZyD6EPl6KU
+Fireplace 24/7 (6) || Fireplace6.yt || Fireplace || https://www.youtube.com/watch?v=1bROU5AqM8w
+Fireplace 24/7 (7) || Fireplace7.yt || Fireplace || https://www.youtube.com/watch?v=q9bM12ucTIY
+Fireplace 24/7 (8) || Fireplace8.yt || Fireplace || https://www.youtube.com/watch?v=_jxkQLJIPuA
+Fireplace 24/7 (9) || Fireplace9.yt || Fireplace || https://www.youtube.com/watch?v=gW36lRz0b1o
